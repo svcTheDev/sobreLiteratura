@@ -1,0 +1,118 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.no-webp .start {
+    background-image: url("/build/img/bgfinal.webp");
+}
+
+.webp .start {
+    background-image: url("/build/img/bgfinal.webp");
+}
+
+.header {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 85vw;
+    // align-items: end;
+
+    @include m.mobile {
+        background-position: top;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+.heading {
+    display: flex;
+
+    @include m.mobile {
+        justify-content: center; 
+    }
+   
+}
+
+.container-header {
+    width: 90%;
+
+
+    @include m.mobile {
+        max-width: 1100px;
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    .logo {
+        margin-top: 1rem;
+        padding-bottom: 2rem;
+
+        @include m.mobile {
+            margin-top: 7rem;
+            width: 100%;
+
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+.nav {
+    padding-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-weight: 300;
+    justify-content: space-evenly;
+
+    @include m.mobile {
+        flex-direction: row;
+    }
+    
+    a {
+        font-size: 1.7rem;
+        color: rgba(0, 0, 0, 0.61);
+        text-decoration: none;
+        padding: 1rem 0;
+       
+        @include m.mobile{
+            font-size: 1.2rem;
+        }
+    }
+    a:hover {
+        color: rgb(0, 0, 0);
+    }   
+}
+
+.header-text {
+    font-family: "Sevillana", cursive;
+    font-size: 1.5rem;
+    font-style: italic;
+    padding-top: 3rem;
+    text-align: right;
+    color: v.$grayBlack;
+    width: 50%;
+
+    @include m.mobile {
+        text-align: center;
+        width: 30%;
+        padding-top: 5rem;
+    }  
+}
+
+.about {
+    // padding-top: 20rem;
+    height: 100vh;
+    text-transform: uppercase;
+    text-align: center;
+
+    span {
+        font-weight: 100;
+    }
+}

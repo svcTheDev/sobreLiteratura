@@ -1,0 +1,165 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Quattrocento Sans", sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.no-webp .start {
+  background-image: url("/build/img/bgfinal.webp");
+}
+
+.webp .start {
+  background-image: url("/build/img/bgfinal.webp");
+}
+
+.header {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 85vw;
+}
+@media (min-width: 480px) {
+  .header {
+    background-position: top;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.heading {
+  display: flex;
+}
+@media (min-width: 480px) {
+  .heading {
+    justify-content: center;
+  }
+}
+
+.container-header {
+  width: 90%;
+}
+@media (min-width: 480px) {
+  .container-header {
+    max-width: 1100px;
+    width: 30%;
+    margin: 0 auto;
+  }
+}
+.container-header .logo {
+  margin-top: 1rem;
+  padding-bottom: 2rem;
+}
+@media (min-width: 480px) {
+  .container-header .logo {
+    margin-top: 7rem;
+    width: 100%;
+  }
+}
+.container-header img {
+  width: 100%;
+}
+
+.nav {
+  padding-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-weight: 300;
+  justify-content: space-evenly;
+}
+@media (min-width: 480px) {
+  .nav {
+    flex-direction: row;
+  }
+}
+.nav a {
+  font-size: 1.7rem;
+  color: rgba(0, 0, 0, 0.61);
+  text-decoration: none;
+  padding: 1rem 0;
+}
+@media (min-width: 480px) {
+  .nav a {
+    font-size: 1.2rem;
+  }
+}
+.nav a:hover {
+  color: rgb(0, 0, 0);
+}
+
+.header-text {
+  font-family: "Sevillana", cursive;
+  font-size: 1.5rem;
+  font-style: italic;
+  padding-top: 3rem;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.513);
+  width: 50%;
+}
+@media (min-width: 480px) {
+  .header-text {
+    text-align: center;
+    width: 30%;
+    padding-top: 5rem;
+  }
+}
+
+.about {
+  height: 100vh;
+  text-transform: uppercase;
+  text-align: center;
+}
+.about span {
+  font-weight: 100;
+}
+
+.footer {
+  margin-top: 30rem;
+  background-color: black;
+  padding: 2rem 0 2rem 0;
+  font-size: 1rem;
+}
+@media (min-width: 480px) {
+  .footer {
+    font-size: 1.3rem;
+  }
+}
+.footer p {
+  padding-top: 2rem;
+  text-align: center;
+  margin: 0;
+  color: white;
+  font-weight: 600;
+}
+.footer .nav {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+@media (min-width: 480px) {
+  .footer .nav {
+    justify-content: flex-start;
+    font-size: 1.3rem;
+  }
+}
+.footer .nav a {
+  color: white;
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+}
+@media (min-width: 480px) {
+  .footer .nav a {
+    font-size: 1.3rem;
+  }
+}

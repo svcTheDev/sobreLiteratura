@@ -1,0 +1,41 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.footer {
+    margin-top: 30rem;
+    background-color: v.$black;
+    padding: 2rem 0 2rem 0;
+    font-size: 1rem;
+
+    @include m.mobile {
+        font-size: 1.3rem;
+    }
+
+    p {
+        padding-top: 2rem;
+        text-align: center;
+        margin: 0;
+        color: v.$white;
+        font-weight: 600;
+
+       
+    }
+
+    .nav {
+        flex-direction: row;
+        justify-content: flex-end;
+        @include m.mobile {
+            justify-content: flex-start;
+            font-size: 1.3rem;
+        }
+        a {
+            color: v.$white;
+            padding: 0 .5rem;
+            font-size: 1.1rem;
+
+            @include m.mobile {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}

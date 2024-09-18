@@ -1,0 +1,23 @@
+{
+  "name": "blog-sobreliteratura-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "n",
+  "scripts": {
+    "sass": "sass src/scss:build/css"
+  },
+  "author": "sergio",
+  "license": "ISC",
+  "dependencies": {
+    "avif": "^0.5.3",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.78.0"
+  },
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-avif": "^1.1.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-webp": "^2.3.0"
+  }
+}
