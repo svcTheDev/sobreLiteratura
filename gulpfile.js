@@ -41,5 +41,5 @@ function dev(done) {
     done();
 }
 exports.css = css;
-exports.images = images;
+// exports.images = images;
 exports.dev = dev;
