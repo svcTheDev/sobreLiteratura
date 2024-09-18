@@ -2,7 +2,7 @@
 @use '../base/mixins' as m;
 
 .about {
-    padding-top: 25rem;
+    padding-top: 15rem;
     height: 100vh;
     text-transform: uppercase;
     text-align: center;
@@ -11,19 +11,40 @@
         font-weight: 100;
     }
 
+    @include m.mobile {
+        padding-top: 25rem;
+        background-position: top;
+        flex-direction: column;
+        width: 100vw;
+        height: 250vh;
+    }
    
 }
 
 .icons-boxes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    margin-top: 3rem;
+    @include m.grid($columns: 1, $rows: 6);
+
+    @include m.mobile {
+            @include m.grid($columns: 2, $rows: 3);
+    }
+}
+
+.icon-img {
+    width: 60%;
+
 }
 
 .icon {
     img {
+        width: 100%;
+        @include m.mobile {
         width: 70%;
+
+        }
     }
+
+    
 }
 
 .icon-text {
@@ -31,5 +52,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @include m.mobile {
+        
+        }
 }
 
