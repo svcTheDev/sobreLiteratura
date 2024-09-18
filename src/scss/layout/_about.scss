@@ -2,8 +2,6 @@
 @use '../base/mixins' as m;
 
 .about {
-    padding-top: 15rem;
-    height: 100vh;
     text-transform: uppercase;
     text-align: center;
 
@@ -12,27 +10,20 @@
     }
 
     @include m.mobile {
-        padding-top: 25rem;
         background-position: top;
         flex-direction: column;
-        width: 100vw;
-        height: 250vh;
+        margin: 0 auto;
     }
    
 }
 
 .icons-boxes {
     margin-top: 3rem;
+    align-items: center;
     @include m.grid($columns: 1, $rows: 6);
-
     @include m.mobile {
             @include m.grid($columns: 2, $rows: 3);
     }
-}
-
-.icon-img {
-    width: 60%;
-
 }
 
 .icon {

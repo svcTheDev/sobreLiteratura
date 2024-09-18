@@ -8,7 +8,7 @@ body {
 .container {
   max-width: 1100px;
   width: 80%;
-  margin: 0;
+  margin: 0 auto;
 }
 @media (min-width: 480px) {
   .container {
@@ -39,7 +39,7 @@ body {
     background-position: top;
     flex-direction: column;
     width: 100vw;
-    height: 250vh;
+    height: 97vh;
   }
 }
 
@@ -122,7 +122,6 @@ body {
 }
 
 .footer {
-  margin-top: 200rem;
   background-color: black;
   padding: 2rem 0 2rem 0;
   font-size: 1rem;
@@ -161,8 +160,6 @@ body {
 }
 
 .about {
-  padding-top: 15rem;
-  height: 100vh;
   text-transform: uppercase;
   text-align: center;
 }
@@ -171,16 +168,15 @@ body {
 }
 @media (min-width: 480px) {
   .about {
-    padding-top: 25rem;
     background-position: top;
     flex-direction: column;
-    width: 100vw;
-    height: 250vh;
+    margin: 0 auto;
   }
 }
 
 .icons-boxes {
   margin-top: 3rem;
+  align-items: center;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(6, 1fr);
@@ -191,10 +187,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
-}
-
-.icon-img {
-  width: 60%;
 }
 
 .icon img {

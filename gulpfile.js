@@ -1,8 +1,8 @@
-const {src, dest, watch, parallel} = require("gulp"); 
+const {src, dest, watch} = require("gulp"); 
 const sass = require("gulp-sass")(require('sass'));
 const plumber = require("gulp-plumber");
 // const webp = require("gulp-webp")
-const imagemin = require("gulp-imagemin");
+// const imagemin = require("gulp-imagemin");
 // const cache =  require("gulp-cache");
 // const avif = require("gulp-avif")
 
@@ -26,14 +26,14 @@ function css (done) {
 //     done();
 // }
 
-function images (done) {
-    const options = {
-        optimizationLevel: 3
-    }
-    src("src/img/**/*.{jpeg,png}")
-    .pipe((imagemin(options)))
-    .pipe(dest("build/img"));
-} 
+// function images (done) {
+//     const options = {
+//         optimizationLevel: 3
+//     }
+//     src("src/img/**/*.{jpeg,png}")
+//     .pipe((imagemin(options)))
+//     .pipe(dest("build/img"));
+// } 
 
 function dev(done) {
     watch("src/scss/**/*.scss", css);
@@ -42,4 +42,4 @@ function dev(done) {
 }
 exports.css = css;
 exports.images = images;
-exports.dev = parallel(images, dev);
+exports.dev = dev;
