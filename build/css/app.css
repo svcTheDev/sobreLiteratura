@@ -34,7 +34,7 @@ body {
     background-position: top;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    height: 250vh;
   }
 }
 
@@ -116,15 +116,6 @@ body {
   }
 }
 
-.about {
-  height: 100vh;
-  text-transform: uppercase;
-  text-align: center;
-}
-.about span {
-  font-weight: 100;
-}
-
 .footer {
   margin-top: 30rem;
   background-color: black;
@@ -162,4 +153,31 @@ body {
   .footer .nav a {
     font-size: 1.3rem;
   }
+}
+
+.about {
+  padding-top: 25rem;
+  height: 100vh;
+  text-transform: uppercase;
+  text-align: center;
+}
+.about span {
+  font-weight: 100;
+}
+
+.icons-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.icon img {
+  width: 70%;
+}
+
+.icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

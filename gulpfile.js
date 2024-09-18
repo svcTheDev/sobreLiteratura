@@ -42,4 +42,4 @@ function dev(done) {
 }
 exports.css = css;
 exports.images = images;
-exports.dev = parallel(images, turnToWebp, dev);
+exports.dev = parallel(images, dev);
