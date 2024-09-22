@@ -9,3 +9,26 @@
     grid-template-columns: repeat($columns, 1fr);
     grid-template-rows: repeat($rows, 1fr);
 }
+
+@mixin button($bg, $display){
+    display: $display;
+    background-color: $bg;
+    text-align: center;
+    padding: 1rem;
+    color: white;
+
+    &:hover {
+        background-color: darken($bg, 5);
+    }
+    
+}
+
+@mixin bg-img ($width, $align) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    display: flex;
+    flex-direction: column;
+    width: $width;
+    align-items: $align;
+}

@@ -1,0 +1,37 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.no-webp .contact-promo {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.5)), url(/src/img/contacto-img.jpg);
+    
+}
+
+.webp .contact-promo {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/contacto-img.webp);
+}
+
+.contact-promo {
+    @include m.bg-img ($width: 100%, $align: center);
+    color: white;
+
+    .promo-content {
+        padding: 20rem 0;
+        text-align: center;
+
+        @include m.mobile {
+            padding: 5rem 0;
+        }
+        h2 {
+            font-size: 2rem;
+            margin: 0;
+        }
+        p {
+            margin: 2rem 0 3rem 0;
+        }
+    }
+}
+
+.button-inline {
+    margin-top: 200rem;
+    @include m.button($bg: v.$orange, $display: inline);
+}

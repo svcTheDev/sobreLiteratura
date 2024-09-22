@@ -41,7 +41,7 @@
 }
 
 .iconList {
-    display: inline;
+    display: in line;
     padding-inline: 0;
     list-style-type:none;
 
@@ -53,4 +53,8 @@
             width: 10%;
         }
     }
+}
+
+.button-block {
+    @include m.button($bg: v.$orange, $display: block);
 }

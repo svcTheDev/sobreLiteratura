@@ -15,6 +15,11 @@ h6 {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   max-width: 1100px;
   width: 80%;
@@ -35,19 +40,18 @@ h6 {
 }
 
 .header {
-  height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   width: 85vw;
+  align-items: flex-end;
+  height: 100vh;
 }
 @media (min-width: 480px) {
   .header {
     background-position: top;
-    flex-direction: column;
     width: 100vw;
     height: 97vh;
   }
@@ -102,7 +106,6 @@ h6 {
 .nav a {
   font-size: 1.7rem;
   color: rgba(0, 0, 0, 0.61);
-  text-decoration: none;
   padding: 1rem 0;
 }
 @media (min-width: 480px) {
@@ -214,6 +217,7 @@ h6 {
   align-items: center;
   justify-content: center;
 }
+
 .container h2 {
   display: inline;
   border-bottom: 2px groove #000000;
@@ -252,7 +256,7 @@ h6 {
 }
 
 .iconList {
-  display: inline;
+  display: in line;
   padding-inline: 0;
   list-style-type: none;
 }
@@ -261,4 +265,62 @@ h6 {
 }
 .iconList picture img {
   width: 10%;
+}
+
+.button-block {
+  display: block;
+  background-color: #E0762D;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+}
+.button-block:hover {
+  background-color: #d4691f;
+}
+
+.no-webp .contact-promo {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.5)), url(/src/img/contacto-img.jpg);
+}
+
+.webp .contact-promo {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/contacto-img.webp);
+}
+
+.contact-promo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  color: white;
+}
+.contact-promo .promo-content {
+  padding: 20rem 0;
+  text-align: center;
+}
+@media (min-width: 480px) {
+  .contact-promo .promo-content {
+    padding: 5rem 0;
+  }
+}
+.contact-promo .promo-content h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+.contact-promo .promo-content p {
+  margin: 2rem 0 3rem 0;
+}
+
+.button-inline {
+  margin-top: 200rem;
+  display: inline;
+  background-color: #E0762D;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+}
+.button-inline:hover {
+  background-color: #d4691f;
 }
