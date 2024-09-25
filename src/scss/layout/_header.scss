@@ -12,7 +12,7 @@
 .header {
     @include m.bg-img($width: 85vw, $align: flex-end);
     height: 100vh;
-
+    margin-bottom: 2rem;
     @include m.mobile {
         background-position: top;
         width: 100vw;
@@ -81,26 +81,4 @@
     }   
 }
 
-.header-text {
-    font-family: "Sevillana", cursive;
-    font-size: 1.5rem;
-    font-style: italic;
-    padding-top: 3rem;
-    text-align: right;
-    color: v.$grayBlack;
-    width: 50%;
-    
-    
-    @include m.mobile {
-        font-size: 2.5rem;
-        text-align: center;
-        width: 30%;
-        padding-top: 5rem;
-        p {
-            margin-top: 6rem;
-        }
-    }  
-
-  
-}
 

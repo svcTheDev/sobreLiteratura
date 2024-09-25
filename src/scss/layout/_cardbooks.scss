@@ -7,9 +7,10 @@
     flex-direction: column;
     justify-content: space-between;
     
+
     @include m.mobile {
         flex-direction: row;
-        
+        flex-wrap: wrap;
     }
 }
 

@@ -19,7 +19,7 @@ body {
 }
 
 h2 {
-  text-align: center;
+  text-align: left;
 }
 
 h6 {
@@ -44,6 +44,27 @@ a {
   }
 }
 
+.header-text {
+  font-family: "Sevillana", cursive;
+  font-size: 2.5rem;
+  font-style: italic;
+  padding-top: 3rem;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.513);
+  width: 50%;
+}
+@media (min-width: 480px) {
+  .header-text {
+    font-size: 2.5rem;
+    text-align: center;
+    width: 30%;
+    padding-top: 5rem;
+  }
+  .header-text p {
+    margin-top: 6rem;
+  }
+}
+
 .no-webp .start {
   background-image: url("/build/img/bgfinal.webp");
 }
@@ -61,6 +82,7 @@ a {
   width: 85vw;
   align-items: flex-end;
   height: 100vh;
+  margin-bottom: 2rem;
 }
 @media (min-width: 480px) {
   .header {
@@ -128,27 +150,6 @@ a {
 }
 .nav a:hover {
   color: rgb(0, 0, 0);
-}
-
-.header-text {
-  font-family: "Sevillana", cursive;
-  font-size: 1.5rem;
-  font-style: italic;
-  padding-top: 3rem;
-  text-align: right;
-  color: rgba(0, 0, 0, 0.513);
-  width: 50%;
-}
-@media (min-width: 480px) {
-  .header-text {
-    font-size: 2.5rem;
-    text-align: center;
-    width: 30%;
-    padding-top: 5rem;
-  }
-  .header-text p {
-    margin-top: 6rem;
-  }
 }
 
 .footer {
@@ -236,6 +237,7 @@ a {
 @media (min-width: 480px) {
   .cards_container {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -276,7 +278,7 @@ a {
   color: white;
 }
 .button-block:hover {
-  background-color: #d4691f;
+  background-color: rgb(212.1784232365, 105.0788381743, 31.3215767635);
 }
 
 .no-webp .contact-promo {
@@ -323,7 +325,7 @@ a {
   color: white;
 }
 .button-inline:hover {
-  background-color: #d4691f;
+  background-color: rgb(212.1784232365, 105.0788381743, 31.3215767635);
 }
 
 .blog-articles {

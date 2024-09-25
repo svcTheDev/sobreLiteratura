@@ -23,7 +23,7 @@ body {
 }
 
 h2 {
-    text-align: center;
+    text-align: left;
 }
 
 h6 {
@@ -45,4 +45,28 @@ a {
     @include m.mobile {
         margin: 0 auto;
     }
+}
+
+
+.header-text {
+    font-family: "Sevillana", cursive;
+    font-size: 2.5rem;
+    font-style: italic;
+    padding-top: 3rem;
+    text-align: right;
+    color: v.$grayBlack;
+    width: 50%;
+    
+    
+    @include m.mobile {
+        font-size: 2.5rem;
+        text-align: center;
+        width: 30%;
+        padding-top: 5rem;
+        p {
+            margin-top: 6rem;
+        }
+    }  
+
+  
 }
