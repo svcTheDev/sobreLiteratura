@@ -1,0 +1,30 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    
+    img {
+        width: 100%;
+        @include m.mobile {
+            width: unset;
+        }
+    }
+
+        
+
+    @include m.mobile {
+        flex-direction: row;
+    }
+    
+}
+
+// .about-me-img {
+//     img {
+//         @include m.mobile {
+//             display: block;
+//         }
+//     }
+// }

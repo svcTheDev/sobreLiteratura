@@ -8,6 +8,20 @@ body {
     font-family: "Quattrocento Sans", sans-serif;
 }
 
+.text-heading {
+    text-align: center;
+    margin: 2rem 0;
+    h2 {
+        display:inline;
+        border-bottom: 2px groove #000000;
+        text-transform: uppercase;
+        span {
+            font-weight: 100;
+        }
+    }
+   
+}
+
 h2 {
     text-align: center;
 }

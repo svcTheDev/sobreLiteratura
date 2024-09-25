@@ -1,17 +1,6 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-.container {
-
-    h2 {
-        display: inline;
-        border-bottom: 2px groove #000000;
-        text-transform: uppercase;
-    }
-    span {
-        font-weight: 100;
-    }
-}
 
 .cards_container {
     display: flex;

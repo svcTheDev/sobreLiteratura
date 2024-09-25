@@ -2,13 +2,6 @@
 @use '../base/mixins' as m;
 
 .about {
-    text-transform: uppercase;
-    text-align: center;
-
-    span {
-        font-weight: 100;
-    }
-
     @include m.mobile {
         background-position: top;
         flex-direction: column;
