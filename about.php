@@ -1,39 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SobreLiteratura</title>
-    <link rel="stylesheet" href="build/css/app.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sevillana&display=swap" rel="stylesheet">
-
-</head>
-<body>
+<?php 
+    $header_text = 2;
+    include 'includes/templates/header.php';
+?>
     
-    <header class="header start" >
-        <div class="heading container-header">
-            <div class="logo">
-                <a href="index.html"><img src="src/img/Logo_final_2copia_upscayl_4.png" alt="logo"></a>
-            </div>
-        </div>
-
-        <nav class="nav container-header">
-            <a href="about.html">Sobre mí</a>
-            <a href="reviews.html">Reseñas</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contacto</a>
-        </nav>
-
-        <div class="header-text container-header">
-            <p>Un poco sobre mí</p>
-        </div>
-    </header>
-
     <section class="about-me container">
         <div class="about-me-img">
             <picture>
@@ -83,20 +52,6 @@
     </div>
     <!-- END ABOUT THE PROJECT -->
 
-    <footer class="footer">
-        <div class="container">
-            <nav class="nav">
-                <a href="about.html">Sobre mí</a>
-                <a href="reviews.html">Reseñas</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contacto</a>
-            </nav>
-            <div>
-                <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="src/js/modernizr-custom.js"></script>
-</body>
-</html>
+<?php 
+    include 'includes/templates/footer.php';
+?>

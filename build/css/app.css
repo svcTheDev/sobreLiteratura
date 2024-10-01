@@ -66,11 +66,11 @@ a {
 }
 
 .no-webp .start {
-  background-image: url("src/img/bgfinal.png");
+  background-image: url(/src/img/bgfinal.png);
 }
 
 .webp .start {
-  background-image: url("build/img/bgfinal.webp");
+  background-image: url(../img/bgfinal.webp);
 }
 
 .header {
