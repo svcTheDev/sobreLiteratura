@@ -1,6 +1,7 @@
 <?php 
     $header_text = 2;
-    include 'includes/templates/header.php';
+    require 'includes/functions.php';
+    includeTemplate("header", $header_text);
 ?>
     
     <section class="about-me container">
@@ -53,5 +54,5 @@
     <!-- END ABOUT THE PROJECT -->
 
 <?php 
-    include 'includes/templates/footer.php';
+    includeTemplate("Footer", $header_text);
 ?>

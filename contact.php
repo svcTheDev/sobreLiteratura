@@ -1,8 +1,9 @@
 <?php 
     $header_text = 5;
-    include 'includes/templates/header.php';
+    require 'includes/functions.php';
+    includeTemplate("header", $header_text);
 ?>
     
 <?php 
-    include 'includes/templates/footer.php';
+    includeTemplate("Footer", $header_text);
 ?>

@@ -1,6 +1,7 @@
 <?php 
     $header_text = 3;
-    include 'includes/templates/header.php';
+    require 'includes/functions.php';
+    includeTemplate("header", $header_text);
 ?>
     <div class="cards_container margin-top container">
 
@@ -211,5 +212,5 @@
         </div>
 
 <?php 
-    include 'includes/templates/footer.php';
+    includeTemplate("Footer", $header_text);
 ?>

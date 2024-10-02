@@ -1,6 +1,7 @@
 <?php 
     $header_text = 1;
-    include 'includes/templates/header.php';
+    require 'includes/functions.php';
+    includeTemplate("header", $header_text);
 ?>
        <!-- END HEADER -->
 
@@ -176,5 +177,5 @@
         </section>
         <!-- END BLOG SECTION -->
 <?php 
-    include 'includes/templates/footer.php';
+    includeTemplate("Footer", $header_text);
 ?>
