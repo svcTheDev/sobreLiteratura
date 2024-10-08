@@ -22,14 +22,16 @@ body {
    
 }
 
-h2 {
-    text-align: left;
-}
 
 h6 {
     font-size: 1.8rem;
     margin: 1rem 0;
     text-align: center;
+}
+
+h1,h2,h3 {
+    font-size: 2rem;
+    font-weight: 300;
 }
 
 a {
@@ -45,6 +47,10 @@ a {
     @include m.mobile {
         margin: 0 auto;
     }
+}
+
+.text-centered {
+    text-align: center;
 }
 
 
@@ -69,4 +75,16 @@ a {
     }  
 
   
+}
+
+.button-block {
+    @include m.button($bg: v.$orange, $display: block);
+}
+
+.button-inline {
+    @include m.button($bg: v.$orange, $display: inline-block);
+}
+
+.margin-bottom {
+    margin-bottom: 2rem;
 }

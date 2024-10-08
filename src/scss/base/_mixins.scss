@@ -11,11 +11,14 @@
 }
 
 @mixin button($bg, $display){
-    display: $display;
     background-color: $bg;
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin: 2rem 0;
     color: white;
+    display: $display;
+    border: none;
 
     &:hover {
         background-color: darken($bg, 5);

@@ -1,6 +1,8 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
+/* contact promo */
+
 .no-webp .contact-promo {
     background-image: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.5)), url(/src/img/contacto-img.jpg);
     
@@ -31,7 +33,55 @@
     }
 }
 
-.button-inline {
-    margin-top: 200rem;
-    @include m.button($bg: v.$orange, $display: inline);
+
+/* forms */
+
+.form {
+
+    fieldset {
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-size: 1.4rem;
+        color: $grayBlack;
+        margin: 2rem 0 0 0;
+    }
+
+    legend {
+        font-size: 2rem;
+        color: $grayBlack;
+    }
+
+    label {
+        font-weight: bold;
+        text-transform: uppercase;
+        display: block;
+    }
+    input:not([type="submit"]), 
+    textarea,
+    select {
+        padding: 1rem;
+        display: block;
+        width: 100%;
+        background-color: $white;
+        border: 1px solid $grayBlack;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    textarea {
+        height: 20rem;
+    }
+
+    .forma-contacto {
+        max-width: 30rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    input[type="radio"] {
+        margin: 0;
+        width: auto;
+    }
 }

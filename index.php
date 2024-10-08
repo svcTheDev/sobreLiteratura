@@ -1,5 +1,5 @@
 <?php 
-    $header_text = 1;
+    $header_text = "Explora la literatura universal de una forma distinta";
     require 'includes/functions.php';
     includeTemplate("header", $header_text);
 ?>

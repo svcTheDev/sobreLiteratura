@@ -1,12 +1,12 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-.no-webp .start {
-    background-image: url(/src/img/bgfinal.png);
+.start {
+    background-image: url(../../src/img/bgfinal.png);
 }
 
 .webp .start {
-    background-image: url(../img/bgfinal.webp);
+    background-image: url(../../build/img/bgfinal.webp);
 }
 
 .header {

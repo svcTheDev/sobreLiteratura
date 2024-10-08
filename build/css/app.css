@@ -18,14 +18,15 @@ body {
   font-weight: 100;
 }
 
-h2 {
-  text-align: left;
-}
-
 h6 {
   font-size: 1.8rem;
   margin: 1rem 0;
   text-align: center;
+}
+
+h1, h2, h3 {
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 a {
@@ -42,6 +43,10 @@ a {
   .container {
     margin: 0 auto;
   }
+}
+
+.text-centered {
+  text-align: center;
 }
 
 .header-text {
@@ -65,12 +70,44 @@ a {
   }
 }
 
-.no-webp .start {
-  background-image: url(/src/img/bgfinal.png);
+.button-block {
+  background-color: #E0762D;
+  text-align: center;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: white;
+  display: block;
+  border: none;
+}
+.button-block:hover {
+  background-color: #d4691f;
+}
+
+.button-inline {
+  background-color: #E0762D;
+  text-align: center;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: white;
+  display: inline-block;
+  border: none;
+}
+.button-inline:hover {
+  background-color: #d4691f;
+}
+
+.margin-bottom {
+  margin-bottom: 2rem;
+}
+
+.start {
+  background-image: url(../../src/img/bgfinal.png);
 }
 
 .webp .start {
-  background-image: url(../img/bgfinal.webp);
+  background-image: url(../../build/img/bgfinal.webp);
 }
 
 .header {
@@ -270,17 +307,7 @@ a {
   width: 10%;
 }
 
-.button-block {
-  display: block;
-  background-color: #E0762D;
-  text-align: center;
-  padding: 1rem;
-  color: white;
-}
-.button-block:hover {
-  background-color: #d4691f;
-}
-
+/* contact promo */
 .no-webp .contact-promo {
   background-image: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.5)), url(/src/img/contacto-img.jpg);
 }
@@ -316,16 +343,47 @@ a {
   margin: 2rem 0 3rem 0;
 }
 
-.button-inline {
-  margin-top: 200rem;
-  display: inline;
-  background-color: #E0762D;
-  text-align: center;
-  padding: 1rem;
-  color: white;
+/* forms */
+.form fieldset {
+  margin-bottom: 2rem;
 }
-.button-inline:hover {
-  background-color: #d4691f;
+.form p {
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.513);
+  margin: 2rem 0 0 0;
+}
+.form legend {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.513);
+}
+.form label {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+}
+.form input:not([type=submit]),
+.form textarea,
+.form select {
+  padding: 1rem;
+  display: block;
+  width: 100%;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.513);
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.form textarea {
+  height: 20rem;
+}
+.form .forma-contacto {
+  max-width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form input[type=radio] {
+  margin: 0;
+  width: auto;
 }
 
 .blog-articles {
