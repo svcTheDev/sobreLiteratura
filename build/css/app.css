@@ -462,3 +462,11 @@ a {
     flex-direction: row;
   }
 }
+
+.alert {
+  margin: 0.5rem 0;
+}
+.alert.error {
+  color: #d00e17;
+  text-transform: uppercase;
+}

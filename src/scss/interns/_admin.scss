@@ -1,0 +1,10 @@
+@use 'base/variables' as v;
+
+.alert {
+    margin: .5rem 0;
+    &.error {
+        color: v.$error;
+        text-transform: uppercase;
+    }
+
+}
