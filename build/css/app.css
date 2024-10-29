@@ -470,3 +470,7 @@ a {
   color: #d00e17;
   text-transform: uppercase;
 }
+.alert.success {
+  color: green;
+  text-transform: uppercase;
+}

@@ -1,8 +1,11 @@
 <?php 
 
+    session_start();
+
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+
 
     require '../../includes/config/database.php';
 
@@ -24,16 +27,31 @@
     $created = date("y.m.d");
 
 
-
     if($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+        $cover = $_FILES['cover'];
 
-        $title = $_POST['title'];
-        $author = $_POST['author'];
-        $description = $_POST['description'];
-        $rating = $_POST['rating'];
-        $publishing = $_POST['publishing'];
-        $dateReview = $_POST['dateReview'];
-        $user = $_POST['users_id'];
+        $upload_dir = '../../uploads/';
+
+        if(!is_dir($upload_dir)) {
+            mkdir($upload_dir);
+        }
+   
+        $temp = $_FILES['cover']['tmp_name'];
+
+        $imageName = md5( uniqid( rand(), true)) . ".jpg";
+
+        $target_file = $upload_dir . $imageName;
+
+        move_uploaded_file($temp, $target_file);
+
+        $title = mysqli_real_escape_string($db, $_POST['title']);
+        $author = mysqli_real_escape_string($db, $_POST['author']);
+        $description = mysqli_real_escape_string($db, $_POST['description']);
+        $rating = mysqli_real_escape_string($db, $_POST['rating']);
+        $publishing = mysqli_real_escape_string($db, $_POST['publishing']);
+        $dateReview = mysqli_real_escape_string($db, $_POST['dateReview']);
+        $user = mysqli_real_escape_string($db, $_POST['users_id']);
 
         if (!$title) {
             $errors[] = "! Es necesario un título";
@@ -61,14 +79,29 @@
             $errors[] = "! Debes seleccionar un escritor";
         }
 
+        $measure = 1000 * 1000;
+
+    
+        if(!$cover['name'] || $cover['error']) {
+            $errors[] = "! La imagen es obligatoria";
+        }
+
+        if ($cover['size'] > $measure) {
+            $errors[] = "! La imagen es muy grande";
+        }
+        
+        
+    
+
         if (empty($errors)) {
-            $query = "INSERT INTO reviews (title, author, description, rating, publishing, dateReview   , users_id, created) VALUES ('$title', '$author', '$description', '$rating', '$publishing', '$dateReview', '$user', '$created')";
+            $query = "INSERT INTO reviews (title, author, image, description, rating, publishing, dateReview   , users_id, created) VALUES ('$title', '$author', '$imageName', '$description', '$rating', '$publishing', '$dateReview', '$user', '$created')";
         
             $result = mysqli_query($db, $query);
 
             if ($result) {
 
-                header('location: create.php');
+                $_SESSION['errors'] = '✔ La reseña fue subida';
+                header('location: ../index.php');
             }
         } 
 
@@ -83,9 +116,9 @@
 
 <main class="container">
     
-    <a href="../index.php" class="button-inline margin-bottom">Volver</a>
+    <a href="../index.php" class="button-inline margin-bottom" >Volver</a>
     
-    <form method="POST" action="/blog_sobreliteratura/admin/reviews/create.php" class="form">
+    <form method="POST" action="/blog_sobreliteratura/admin/reviews/create.php" enctype="multipart/form-data" class="form">
         <fieldset>
             <legend>Informarción General</legend>
             
@@ -96,7 +129,7 @@
             <input type="text" value="<?php echo $author ?>" name="author" id="author" placeholder="Autor del libro">
             
             <label for="cover">Portada:</label>
-            <input type="file" id="cover" accept="image/jpeg, image/png">
+            <input type="file" name="cover" id="cover" accept="image/jpeg, image/png">
             
             <label for="review">Reseña:</label>
             <textarea name="description" id="review"><?php echo $description ?></textarea>

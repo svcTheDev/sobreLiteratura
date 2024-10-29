@@ -6,5 +6,9 @@
         color: v.$error;
         text-transform: uppercase;
     }
+    &.success {
+        color: v.$success;
+        text-transform: uppercase;
+    }
 
 }
