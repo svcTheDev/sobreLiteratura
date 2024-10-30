@@ -472,5 +472,24 @@ a {
 }
 .alert.success {
   color: green;
-  text-transform: uppercase;
+}
+
+table.reviews {
+  border: solid 1px black;
+  margin: 2rem 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+table.reviews th {
+  color: white;
+  padding: 1rem;
+  background-color: #E0762D;
+}
+table.reviews td {
+  padding: 1rem;
+  border: solid 1px black;
+}
+
+.image_review {
+  width: 15rem;
 }

@@ -8,7 +8,29 @@
     }
     &.success {
         color: v.$success;
-        text-transform: uppercase;
     }
 
+}
+
+table.reviews {
+    border: solid 1px black;
+    margin: 2rem 0;
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+        color: white;
+        padding: 1rem;
+        background-color: v.$orange;
+        
+    }
+
+    td {
+        padding: 1rem;
+        border: solid 1px black;
+    }
+}
+
+.image_review {
+    width: 15rem;     
 }
