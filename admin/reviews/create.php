@@ -6,16 +6,17 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-
     require '../../includes/config/database.php';
 
+
+
     $db = connectDB();
-    
-    $queryWriter = "SELECT * FROM users";
-    
-    $result = mysqli_query($db, $queryWriter);
 
     $errors = [];
+
+    $queryWriter = "SELECT * FROM users";
+
+    $result = mysqli_query($db, $queryWriter);
 
     $title = "";
     $author = "";
@@ -28,7 +29,7 @@
 
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        
+
         $cover = $_FILES['cover'];
 
         $upload_dir = '../../uploads/';
@@ -91,22 +92,20 @@
         }
         
         
-    
-
         if (empty($errors)) {
-            $query = "INSERT INTO reviews (title, author, image, description, rating, publishing, dateReview   , users_id, created) VALUES ('$title', '$author', '$imageName', '$description', '$rating', '$publishing', '$dateReview', '$user', '$created')";
-        
-            $result = mysqli_query($db, $query);
-
-            if ($result) {
-
-                $_SESSION['errors'] = '✔ La reseña fue subida';
-                header('location: ../index.php');
-            }
-        } 
-
-    }
+                $query = "INSERT INTO reviews (title, author, image, description, rating, publishing, dateReview, users_id, created) VALUES ('$title', '$author', '$imageName', '$description', '$rating', '$publishing', '$dateReview', '$user', '$created')";
+            
+                $result = mysqli_query($db, $query);
     
+                if ($result) {
+                    $_SESSION['errors'] = '✔ La reseña fue subida';
+                    header('location: ../index.php');
+                }
+            }
+
+        }
+
+
 
      $header_text = 'Crear reseña';
      require '../../includes/functions.php';
@@ -171,9 +170,8 @@
                 </div>
             <?php endforeach; ?>
         
-        <input type="submit" id="create" value="CREAR RESEÑA" class="button-inline">
-
-
+     
+        <input type="submit" id="create" name="reviews" value="<?php echo isset($_GET['actualizar']) ? "ACTUALIZAR" : "CREAR"; ?>" class="button-inline">
         </form>
     </main>
    
