@@ -493,3 +493,25 @@ table.reviews td {
 .image_review {
   width: 15rem;
 }
+
+.review_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1100px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.iconColumn {
+  display: flex;
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+.iconColumn li {
+  font-size: 1.2rem;
+}
+
+.image {
+  width: 30%;
+}
