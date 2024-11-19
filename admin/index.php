@@ -1,6 +1,15 @@
 <?php 
 
-    session_start();
+require '../includes/functions.php';
+
+$auth = checkAuth();
+
+if (!$auth) {
+    header('location: ../index.php');
+}
+echo '<pre>'; 
+var_dump($_SESSION);
+echo '</pre>';
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -46,7 +55,6 @@
     $resultQuery = mysqli_query($db, $query);
 
      $header_text = 'Administrador de reseñas';
-     require '../includes/functions.php';
      includeTemplate("header", $header_text);
 
 

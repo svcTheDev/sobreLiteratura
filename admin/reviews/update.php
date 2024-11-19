@@ -1,6 +1,12 @@
 <?php 
+    require '../../includes/functions.php';
 
-    session_start();
+    $auth = checkAuth();
+
+    if (!$auth) {
+        echo "esta aqui?";
+        // header('location: ../index.php');
+    }
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -161,7 +167,6 @@
     
 
      $header_text = 'Actualizar reseña';
-     require '../../includes/functions.php';
      includeTemplate("header", $header_text);
 ?>
 

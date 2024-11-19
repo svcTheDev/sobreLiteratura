@@ -1,6 +1,16 @@
 <?php 
 
-    session_start();
+    var_dump($_SESSION);    
+
+
+    require '../../includes/functions.php';
+
+    $auth = checkAuth();
+
+    if (!$auth) {
+        header('location: ../index.php');
+    }
+
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -108,7 +118,6 @@
 
 
      $header_text = 'Crear reseña';
-     require '../../includes/functions.php';
      includeTemplate("header", $header_text);
 ?>
 

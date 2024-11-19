@@ -63,8 +63,5 @@
                     <td colspan="5">Aún no hay ninguna reseña</td>
                 </tr>
                 <?php
-            }
-
-            includeTemplate("Footer", $header_text);
-        
+            }        
             ?>
