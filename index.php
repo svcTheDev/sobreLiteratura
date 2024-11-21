@@ -1,6 +1,6 @@
 <?php 
     $header_text = "Explora la literatura universal de una forma distinta";
-    require 'includes/functions.php';
+    require 'includes/app.php';
     includeTemplate("header", $header_text);
 ?>
        <!-- END HEADER -->

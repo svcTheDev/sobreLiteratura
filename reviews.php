@@ -1,6 +1,6 @@
 <?php 
     $header_text = 'Reseñas';
-    require 'includes/functions.php';
+    require 'includes/app.php';
     includeTemplate("header", $header_text);
 ?>
     <div class="cards_container margin-top container">

@@ -1,12 +1,14 @@
 <?php 
 
-require '../includes/functions.php';
+require '../includes/app.php';
 
-$auth = checkAuth();
+session_start();
+// $auth = checkAuth();
 
-if (!$auth) {
-    header('location: ../index.php');
-}
+// if (!$auth) {
+//     header('location: ../index.php');
+// }
+
 echo '<pre>'; 
 var_dump($_SESSION);
 echo '</pre>';
@@ -14,9 +16,6 @@ echo '</pre>';
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-
-
-    require '../includes/config/database.php';
 
     
     $db = connectDB();
@@ -46,8 +45,7 @@ echo '</pre>';
             $queryDelete = "DELETE FROM reviews WHERE id = $deleteID";
         
             $resultQuery = mysqli_query($db, $queryDelete);
-    
-            $_SESSION['errors'] = '✔ La reseña fue Eliminada';        
+          
         }
 
     }
@@ -63,15 +61,7 @@ echo '</pre>';
 ?>
     
     <main class="container">
-    <?php 
-        if (isset($_SESSION['errors'])) {
-    ?>
-        <div class="alert success">
-            <?php echo $_SESSION['errors']; ?>
-        </div>
-    <?php
-        }
-    ?>
+
         <a href="/blog_sobreliteratura/admin/reviews/create.php" class="button-inline">Nueva reseña</a>
 
         <table class="reviews">
