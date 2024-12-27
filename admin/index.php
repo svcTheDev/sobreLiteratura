@@ -1,21 +1,24 @@
 <?php 
 
-require '../includes/app.php';
+    require '../includes/app.php';
 
-session_start();
-// $auth = checkAuth();
+    // checkAuth();
 
-// if (!$auth) {
-//     header('location: ../index.php');
-// }
+    // $auth = checkAuth();
 
-echo '<pre>'; 
-var_dump($_SESSION);
-echo '</pre>';
+    // if (!$auth) {
+    //     header('location: ../index.php');
+    // }
+
+    
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+
+    use App\Review;
+
+    $review = Review::all();
 
     
     $db = connectDB();
@@ -23,7 +26,9 @@ echo '</pre>';
     $query = "SELECT * FROM reviews";
 
     $resultQuery;
-    
+
+            
+
     
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -47,6 +52,10 @@ echo '</pre>';
             $resultQuery = mysqli_query($db, $queryDelete);
           
         }
+
+        echo '<pre>'; 
+        var_dump($value2);
+        echo '</pre>';
 
     }
 
@@ -77,40 +86,39 @@ echo '</pre>';
             
             <tbody>
             <?php 
-                                
-            if ($resultQuery->num_rows > 0) {
+            foreach ($review as $key => $value) {
+                
+
+            // if ($result = $review->num_rows) {
                 // Loop through each row
-                while ($row = mysqli_fetch_assoc($resultQuery)) {
                     ?>
                     <tr>
-                        <td><?php echo $row['id']; ?></td>
-                        <td><?php echo $row['title']; ?></td>
-                        <td><?php echo $row['author']; ?></td>
-                        <td><img class="image_review" src="<?php echo "../uploads/" . $row['image']; ?>" alt="Image"></td>
+                        <td><?php echo $value->id; ?></td>
+                        <td><?php echo $value->title; ?></td>
+                        <td><?php echo $value->author; ?></td>
+
+                        <!--  -->
+                        <td><img class="image_review" src="<?php echo "../uploads/" . $value->image; ?>" alt="Image"></td>
                         <td>
+
                             <form method="POST">
 
-                                <input type="hidden" name="image" value="<?php echo $row['image']; ?>">
+                                <input type="hidden" name="image" value="<?php echo $value->imagen ?>">
 
-                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $value->id ?>">
 
                                 <input type="submit" class="button-block" value="Eliminar"> 
                             </form>
 
-                            <a href="reviews/update.php?id=<?php echo $row['id']; ?>">
+                            <a href="reviews/update.php?id=<?php echo $value->id ?>">
                                 <button class="button-block">Editar</button>
                             </a>
                         </td>
                     </tr>
                     <?php
                 }
-            } else {
-                ?>
-                <tr>
-                    <td colspan="5">Aún no hay ninguna reseña</td>
-                </tr>
-                <?php
-            }
+            
+        
             ?>
                 </tbody>
                 
@@ -123,4 +131,17 @@ echo '</pre>';
 <?php 
     includeTemplate("Footer", $header_text);
     session_destroy();
+
+/* 
+                while ($row = mysqli_fetch_assoc($resultQuery)) {
+
+
+    } else {
+                ?>
+                <tr>
+                    <td colspan="5">Aún no hay ninguna reseña</td>
+                </tr>
+                <?php
+            } */
+
 ?>

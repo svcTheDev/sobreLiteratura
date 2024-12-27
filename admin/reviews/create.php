@@ -1,6 +1,6 @@
 <?php 
 
-    var_dump($_SESSION);    
+    // var_dump($_SESSION);    
 
 
     require '../../includes/app.php';
@@ -11,6 +11,11 @@
     //     header('location: ../../index.php');
     // }
 
+    use App\Review;
+    use App\Writers;
+    use Intervention\Image\ImageManager as Image;
+    use Intervention\Image\Drivers\Gd\Driver;
+    // user Intervention
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -18,94 +23,59 @@
 
     $db = connectDB();
 
-    $errors = [];
+    $review = new Review;
+
+    $errors = Review::getErrors();
+
+    echo '<pre>'; 
+    var_dump($errors);
+    echo '</pre>';
 
     $queryWriter = "SELECT * FROM users";
 
     $result = mysqli_query($db, $queryWriter);
 
-    $title = "";
-    $author = "";
-    $description = "";
-    $rating = "";  
-    $publishing = "";
-    $dateReview = "";
-    $user = "";
-    $created = date("y.m.d");
+ 
 
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
+        $review = new Review($_POST);
+        $writers = new Writers($_POST);
+
+        
         $cover = $_FILES['cover'];
 
-        $upload_dir = '../../uploads/';
-
-        if(!is_dir($upload_dir)) {
-            mkdir($upload_dir);
-        }
-   
-        $temp = $_FILES['cover']['tmp_name'];
+     
 
         $imageName = md5( uniqid( rand(), true)) . ".jpg";
 
-        $target_file = $upload_dir . $imageName;
+        if ($_FILES['cover']['tmp_name']) {
 
-        move_uploaded_file($temp, $target_file);
+            $manager = new Image(new Driver()); 
+            $image = $manager->read($_FILES['cover']['tmp_name'])->cover(800, 600);
 
-        $title = mysqli_real_escape_string($db, $_POST['title']);
-        $author = mysqli_real_escape_string($db, $_POST['author']);
-        $description = mysqli_real_escape_string($db, $_POST['description']);
-        $rating = mysqli_real_escape_string($db, $_POST['rating']);
-        $publishing = mysqli_real_escape_string($db, $_POST['publishing']);
-        $dateReview = mysqli_real_escape_string($db, $_POST['dateReview']);
-        $user = mysqli_real_escape_string($db, $_POST['users_id']);
-
-        if (!$title) {
-            $errors[] = "! Es necesario un título";
+            // $image = Image::read($_FILES['cover']['tmp_name']);
+            $review->setImage($imageName);
         }
 
-        if (!$author) {
-            $errors[] = "! Es necesario un autor";
-        }
-        if (strlen($description) < 20) {
-            $errors[] = "! Debes escribir una reseña mayor a 20 caracteres";
-        }
+        $errors = $review->validate();
 
-        if (!$rating) {
-            $errors[] = "! Es necesario una calificación";
-        }
-
-        if (!$publishing) {
-            $errors[] = "! Es necesario un editor";
-        }
-        if (!$dateReview) {
-            $errors[] = "! Debe tener una fecha";
-        }
-
-        if (!$user) {
-            $errors[] = "! Debes seleccionar un escritor";
-        }
-
-        $measure = 1000 * 1000;
-
-    
-        if(!$cover['name'] || $cover['error']) {
-            $errors[] = "! La imagen es obligatoria";
-        }
-
-        if ($cover['size'] > $measure) {
-            $errors[] = "! La imagen es muy grande";
-        }
-        
         
         if (empty($errors)) {
-                $query = "INSERT INTO reviews (title, author, image, description, rating, publishing, dateReview, users_id, created) VALUES ('$title', '$author', '$imageName', '$description', '$rating', '$publishing', '$dateReview', '$user', '$created')";
+
+            $upload_dir = '../../uploads/';
+
+            if(!is_dir($upload_dir)) {
+                mkdir($upload_dir);
+            }
+ 
+                $result = $review->saveReview();
             
-                $result = mysqli_query($db, $query);
-    
+                $image->save($upload_dir . $imageName);
+          
                 if ($result) {
-                    $_SESSION['errors'] = '✔ La reseña fue subida';
-                    header('location: ../index.php');
+                    header('location: /admin?result=1');
                 }
             }
 
@@ -123,51 +93,9 @@
     <a href="../index.php" class="button-inline margin-bottom" >Volver</a>
     
     <form method="POST" action="/blog_sobreliteratura/admin/reviews/create.php" enctype="multipart/form-data" class="form">
-        <fieldset>
-            <legend>Informarción General</legend>
-            
-            <label for="title">Titulo:</label>
-            <input type="text" value="<?php echo $title ?>" name="title" id="title" placeholder="Titulo de la reseña">
-            
-            <label for="author">Autor:</label>
-            <input type="text" value="<?php echo $author ?>" name="author" id="author" placeholder="Autor del libro">
-            
-            <label for="cover">Portada:</label>
-            <input type="file" name="cover" id="cover" accept="image/jpeg, image/png">
-            
-            <label for="review">Reseña:</label>
-            <textarea name="description" id="review"><?php echo $description ?></textarea>
-            
-        </fieldset>
-        
-        
-        <fieldset>
-            <legend>Detalles del libro</legend>
-            <label for="rating">Rating:</label>
-            <input type="number" value="<?php echo $rating ?>" name="rating" id="rating" placeholder="Del 1 al 10" min="1" max="10">
-             
-            <label for="publishing">Editorial:</label>
-            <input type="text" value="<?php echo $publishing ?>" name="publishing" id="publishing" placeholder="Ej: Alianza">
-            
-            <label for="dateReview">Fecha:</label>
-            <input type="date" value="<?php echo $dateReview ?>" name="dateReview" id="dateReview" placeholder="Fecha de finalización">
-            
-        </fieldset>
-
-
-
-        <fieldset>
-            <legend>Escritor de la reseña</legend>
-            <select name="users_id">
-                <option value="">--Seleccionar Escritor--</option>
-                <?php while($row = mysqli_fetch_assoc($result)): ?>
-                    <option <?php echo $user === $row['id'] ? 'selected' : ''; ?>
-                    value="<?php echo $row['id'] ?>">
-                    <?php echo $row['name'] . " " . $row['lastname']; ?>
-                </option>
-                <?php endwhile; ?>
-            </select>
-        </fieldset>
+        <?php 
+        include '../../includes/templates/form_reviews.php';
+        ?>
 
         <?php foreach ($errors as $error) : ?>
                 <div class="alert error">
@@ -181,5 +109,8 @@
     </main>
    
 <?php 
+/*    <?php foreach($writers as $writer) { ?>
+                    <option <?php echo $review->users_id === $writer->id ? 'selected' : '' ?> value="<?php echo $writer->id ?>"><?php echo $writer->name . " " . $writer->lastname; ?>
+                <?php  } ?> */
     includeTemplate("Footer", $header_text);
 ?>

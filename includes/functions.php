@@ -12,11 +12,12 @@ function checkAuth() {
 
     session_start();
     
-    $auth = $_SESSION['login'];
-
-    if($auth) {
-        return true;
+    if(!$_SESSION['login']) {
+        header('Location: /');
     }
+}
 
-    return false;
+function s($html){
+    $s = htmlspecialchars($html);
+    return $s;
 }

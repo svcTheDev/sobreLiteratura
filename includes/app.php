@@ -6,8 +6,13 @@
     require 'functions.php';
     require 'config/database.php';
     require __DIR__ . '/../vendor/autoload.php';
+    
+    $db = connectDB();
 
     use App\Review;
+    use App\Writers;
 
-    $review = new Review();
+    Review::setDB($db);
+    Writers::setDB($db);
+
      
