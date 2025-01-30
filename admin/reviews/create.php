@@ -27,56 +27,44 @@
 
     $errors = Review::getErrors();
 
-    echo '<pre>'; 
-    var_dump($errors);
-    echo '</pre>';
 
-    $queryWriter = "SELECT * FROM users";
+    // $queryWriter = "SELECT * FROM users";
 
-    $result = mysqli_query($db, $queryWriter);
-
- 
+    // $result = mysqli_query($db, $queryWriter);
 
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $review = new Review($_POST);
+        $review = new Review($_POST['review']);
         $writers = new Writers($_POST);
-
-        
-        $cover = $_FILES['cover'];
-
-     
 
         $imageName = md5( uniqid( rand(), true)) . ".jpg";
 
-        if ($_FILES['cover']['tmp_name']) {
+        if ($_FILES['review']['tmp_name']['cover']) {
 
             $manager = new Image(new Driver()); 
-            $image = $manager->read($_FILES['cover']['tmp_name'])->cover(800, 600);
+            $image = $manager->read($_FILES['review']['tmp_name']['cover'])->cover(800, 600);
 
             // $image = Image::read($_FILES['cover']['tmp_name']);
             $review->setImage($imageName);
         }
 
+        echo '<pre>'; 
+        var_dump($review);
+        echo '</pre>';
         $errors = $review->validate();
 
         
         if (empty($errors)) {
 
-            $upload_dir = '../../uploads/';
-
-            if(!is_dir($upload_dir)) {
-                mkdir($upload_dir);
+            if(!is_dir(UPLOAD_DIR)) {
+                mkdir(UPLOAD_DIR);
             }
  
-                $result = $review->saveReview();
+                $review->saveReview();
             
-                $image->save($upload_dir . $imageName);
+                $image->save(UPLOAD_DIR . $imageName);
           
-                if ($result) {
-                    header('location: /admin?result=1');
-                }
             }
 
         }

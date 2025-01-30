@@ -17,10 +17,15 @@
     error_reporting(E_ALL);
 
     use App\Review;
+    use App\Users;
 
     $review = Review::all();
+    $users = Users::all();
 
-    
+    echo '<pre>'; 
+    var_dump($users);
+    echo '</pre>';
+
     $db = connectDB();
 
     $query = "SELECT * FROM reviews";
@@ -32,6 +37,8 @@
     
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+       
    
         $deleteID = $_POST['id'];
 
@@ -47,10 +54,11 @@
         unlink($upload_dir . $_POST['image']);
 
         if ($deleteID) {
-            $queryDelete = "DELETE FROM reviews WHERE id = $deleteID";
-        
-            $resultQuery = mysqli_query($db, $queryDelete);
-          
+            $review = Review::find($deleteID);
+
+            
+            $review->delete();
+         
         }
 
         echo '<pre>'; 
@@ -103,9 +111,9 @@
 
                             <form method="POST">
 
-                                <input type="hidden" name="image" value="<?php echo $value->imagen ?>">
+                                <input type="hidden" name="image" value="<?php echo s($value->image) ?>">
 
-                                <input type="hidden" name="id" value="<?php echo $value->id ?>">
+                                <input type="hidden" name="id" value="<?php echo s($value->id) ?>">
 
                                 <input type="submit" class="button-block" value="Eliminar"> 
                             </form>

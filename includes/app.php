@@ -3,6 +3,7 @@
      ini_set('display_startup_errors', 1);
      error_reporting(E_ALL);
 
+
     require 'functions.php';
     require 'config/database.php';
     require __DIR__ . '/../vendor/autoload.php';
@@ -10,9 +11,9 @@
     $db = connectDB();
 
     use App\Review;
-    use App\Writers;
+    use App\Users;
 
     Review::setDB($db);
-    Writers::setDB($db);
+    Users::setDB($db);
 
      
