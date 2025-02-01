@@ -29,13 +29,28 @@
             
         </fieldset>
 
-
-
         <fieldset>
             <legend>Escritor de la reseña</legend>
 
-            <select name="$review[review]->users_id">
+        <?php 
+         echo '<pre>'; 
+         var_dump(s($users[0]->id));
+         echo '</pre>';
+
+        ?>
+
+            <label for="user">Escritor</label>
+            <select name="$review[users_id]" id="user">
                 <option selected value="">--Seleccionar Escritor--</option>
-                <option value=""> <?php echo $writers->name; ?> </option>
+                <?php foreach ($users as $user) {  ?>
+                    <option
+                    
+                    <?php echo $review->users_id === $user->id ? 'selected' : '' ?>
+                     value=" <?php echo s($user->id); ?>">
+                    <?php echo s($user->name) . " " . s($user->lastname); ?>
+                    </option>
+                 
+                <?php } ?>
+                
             </select>
         </fieldset>

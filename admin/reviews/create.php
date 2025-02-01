@@ -12,7 +12,7 @@
     // }
 
     use App\Review;
-    use App\Writers;
+    use App\Users;
     use Intervention\Image\ImageManager as Image;
     use Intervention\Image\Drivers\Gd\Driver;
     // user Intervention
@@ -21,9 +21,11 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    $db = connectDB();
+    // $db = connectDB();
 
     $review = new Review;
+
+    $users = Users::all();
 
     $errors = Review::getErrors();
 
@@ -36,7 +38,6 @@
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $review = new Review($_POST['review']);
-        $writers = new Writers($_POST);
 
         $imageName = md5( uniqid( rand(), true)) . ".jpg";
 
@@ -97,8 +98,5 @@
     </main>
    
 <?php 
-/*    <?php foreach($writers as $writer) { ?>
-                    <option <?php echo $review->users_id === $writer->id ? 'selected' : '' ?> value="<?php echo $writer->id ?>"><?php echo $writer->name . " " . $writer->lastname; ?>
-                <?php  } ?> */
     includeTemplate("Footer", $header_text);
 ?>

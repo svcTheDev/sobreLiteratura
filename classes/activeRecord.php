@@ -165,6 +165,13 @@ class ActiveRecord {
             self::$errors[] = "! Es necesario una fecha";
         }
 
+        echo '<pre>'; 
+        var_dump($this->users_id);
+        echo '</pre>';
+        if (!$this->users_id) {
+            self::$errors[] = "! Elige un escritor";
+        }
+
         return self::$errors;
     }
 
