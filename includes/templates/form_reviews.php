@@ -32,13 +32,6 @@
         <fieldset>
             <legend>Escritor de la reseña</legend>
 
-        <?php 
-         echo '<pre>'; 
-         var_dump(s($users[0]->id));
-         echo '</pre>';
-
-        ?>
-
             <label for="user">Escritor</label>
             <select name="review[users_id]" id="user">
                 <option selected value="">--Seleccionar Escritor--</option>

@@ -82,7 +82,11 @@ a {
 }
 
 .button-inline {
-    @include m.button($bg: v.$orange, $display: inline-block);
+    @include m.button($bg: v.$success, $display: inline-block);
+}
+
+.button-inline-green {
+    @include m.button($bg: v.$success, $display: inline-block);
 }
 
 .margin-bottom {

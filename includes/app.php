@@ -10,10 +10,9 @@
     
     $db = connectDB();
 
-    use App\Review;
-    use App\Users;
+    use App\ActiveRecord;
 
-    Review::setDB($db);
-    Users::setDB($db);
+    ActiveRecord::setDB($db);
+
 
      

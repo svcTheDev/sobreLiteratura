@@ -21,8 +21,23 @@
             $this->lastname = $args['lastname'] ?? '';
         }
    
+        public function validate() {
+    
+            if (!$this->name) {
+                self::$errors[] = "! Es necesario un nombre";
+            }
+    
+            if (!$this->lastname) {
+                self::$errors[] = "! Es necesario un apellido";
+            }
+
+            return self::$errors;
+
+    
     }   
 
+    
+    }
 
 
 ?>

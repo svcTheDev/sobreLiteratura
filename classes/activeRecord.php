@@ -64,18 +64,15 @@ class ActiveRecord {
         echo "actualizado en la base de datos";
 
         if ($result) {
-            header('location: /blog_sobreliteratura/admin/=result=1');
+            header('location: /blog_sobreliteratura/admin/index.php?=result=2');
         }
 
     }
 
     public function delete() {
-        echo '<pre>'; 
-        var_dump('Eliminando...' . $this->id);
-        echo '</pre>';
-
+        
         $query = "DELETE FROM " . static::$table . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
-    
+        
         $result = self::$db->query($query);
 
         if($result) {
@@ -88,7 +85,7 @@ class ActiveRecord {
     // Identify and join the attributes 
     public function setAttributes() {
         $attributes = [];
-        foreach (self::$columnDB as $column ) {
+        foreach (static::$columnDB as $column ) {
             if($column === 'id') continue;
             $attributes[$column] = $this->$column;
         }
@@ -132,47 +129,12 @@ class ActiveRecord {
     }
 
     public static function getErrors() {
-        return self::$errors;
+        return static::$errors;
     }
 
     public function validate() {
 
-        
-        echo '<pre>'; 
-        var_dump($this->id);
-        echo '</pre>';
-
-        if (!$this->title) {
-            self::$errors[] = "! Es necesario un título";
-        }
-
-        if (!$this->author) {
-            self::$errors[] = "! Es necesario un autor";
-        }
-        if (!$this->image) {
-            self::$errors[] = "! Es necesario una imagen";
-        }
-        if (!$this->description) {
-            self::$errors[] = "! Es necesario una descripción y debe tener al menos 20 carateres";
-        }
-        if (!$this->rating) {
-            self::$errors[] = "! Es necesario un rating";
-        }
-        if (!$this->publishing) {
-            self::$errors[] = "! Es necesario una editorial";
-        }
-        if (!$this->dateReview) {
-            self::$errors[] = "! Es necesario una fecha";
-        }
-
-        echo '<pre>'; 
-        var_dump($this->users_id);
-        echo '</pre>';
-        if (!$this->users_id) {
-            self::$errors[] = "! Elige un escritor";
-        }
-
-        return self::$errors;
+        return static::$errors;
     }
 
     public static function all () {
@@ -186,8 +148,9 @@ class ActiveRecord {
     }
 
     public static function find($id) {
+    
         $query = "SELECT * FROM " . static::$table . " WHERE id = $id";
-     
+      
         $result = self::checkingSQL($query);
 
         return array_shift($result);
@@ -198,7 +161,7 @@ class ActiveRecord {
 
         $array = [];
         while($log = $result->fetch_assoc()){
-            $array[] = self::createObj($log);
+            $array[] = static::createObj($log);
         }
 
         return $array;

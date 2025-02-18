@@ -41,6 +41,45 @@ class Review extends ActiveRecord {
         $this->users_id = $args['users_id'] ?? '';
         $this->created = date("y.m.d");
     }
+
+    public function validate() {
+
+        
+        echo '<pre>'; 
+        var_dump($this->id);
+        echo '</pre>';
+
+        if (!$this->title) {
+            self::$errors[] = "! Es necesario un título";
+        }
+
+        if (!$this->author) {
+            self::$errors[] = "! Es necesario un autor";
+        }
+        if (!$this->image) {
+            self::$errors[] = "! Es necesario una imagen";
+        }
+        if (!$this->description) {
+            self::$errors[] = "! Es necesario una descripción y debe tener al menos 20 carateres";
+        }
+        if (!$this->rating) {
+            self::$errors[] = "! Es necesario un rating";
+        }
+        if (!$this->publishing) {
+            self::$errors[] = "! Es necesario una editorial";
+        }
+        if (!$this->dateReview) {
+            self::$errors[] = "! Es necesario una fecha";
+        }
+
+        if (!$this->users_id) {
+            self::$errors[] = "! Elige un escritor madafaka";
+        }
+
+        return self::$errors;
+    }
+
 }
+
 
 ?>

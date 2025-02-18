@@ -85,7 +85,7 @@ a {
 }
 
 .button-inline {
-  background-color: #E0762D;
+  background-color: green;
   text-align: center;
   padding: 1rem 3rem;
   text-align: center;
@@ -95,7 +95,21 @@ a {
   border: none;
 }
 .button-inline:hover {
-  background-color: #d4691f;
+  background-color: #006700;
+}
+
+.button-inline-green {
+  background-color: green;
+  text-align: center;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: white;
+  display: inline-block;
+  border: none;
+}
+.button-inline-green:hover {
+  background-color: #006700;
 }
 
 .margin-bottom {

@@ -1,15 +1,14 @@
 <?php 
-    session_start();
+    
+    require 'includes/app.php';
 
+    
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+        
 
-
-    require 'includes/config/database.php';
-
-    
-    $db = connectDB();
+    use App\Review;
 
     $id = $_GET['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -18,16 +17,7 @@
         header('location: index.php');
     }
 
-    $query = "SELECT * FROM reviews WHERE id = $id";
-
-    $resultQuery = mysqli_query($db, $query);
-
-    $row = mysqli_fetch_assoc($resultQuery);
-
-    if($resultQuery->num_rows === 0) {
-        header('location: index.php');
-    }
-
+    $review = Review::find($id);
 
 ?>
 
@@ -58,17 +48,17 @@
             <a href="contact.php">Contacto</a>
         </nav>
         <div class="header-text container-header">
-             <p><?php echo $row['title']; ?> </p>
+             <p><?php echo $review->title ; ?> </p>
         </div>
     </header>
 
     <div class="review_container">
         <picture>
-            <img class="coverbook" loading="lazy" src="<?php echo "uploads/" . $row['image']; ?>" alt="book1">
+            <img class="coverbook" loading="lazy" src="<?php echo "uploads/" . $review->image ; ?>" alt="book1">
         </picture>
 
-        <P><?php echo $row['description']?></P>
-        <p><?php echo $row['author']?></p>
+        <P><?php echo $review->description ?></P>
+        <p><?php echo $review->author ?></p>
         <div class="iconColumn">
             <div>
                 <picture>
@@ -76,7 +66,7 @@
                     <source srcset="build/img/checkbox.png" type="img/png">
                     <img class="image" loading="lazy" src="build/img/checkbox.png" alt="book1">
                 </picture>
-                <?php echo $row['dateReview']?>
+                <?php echo $review->dateReview ?>
             </div>
             <div>
                 <picture>
@@ -84,12 +74,11 @@
                     <source srcset="build/img/seal.png" type="img/png">
                     <img class="image" loading="lazy" src="build/img/seal.png" alt="book1">
                 </picture>
-                <?php echo $row['publishing']?>
+                <?php echo $review->publishing ?>
             </div>
         
         </div> 
     </div>
     <?php 
-    require 'includes/functions.php';
     includeTemplate("Footer", $header_text = 0);
 ?>

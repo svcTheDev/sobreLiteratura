@@ -23,3 +23,9 @@ function s($html){
     $s = htmlspecialchars($html);
     return $s;
 }
+
+function valideContentType ($type) {
+    $array = ['review', 'user'];
+
+    return in_array($type, $array);
+}

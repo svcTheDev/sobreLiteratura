@@ -3,6 +3,7 @@
 
  
     use App\Review;
+    use App\Users;
     use Intervention\Image\ImageManager as Image;
     use Intervention\Image\Drivers\Gd\Driver;
 
@@ -23,6 +24,7 @@
    
 
     $review = Review::find($id);
+    $users = Users::all();
 
         $errors = Review::getErrors();
 
@@ -45,25 +47,18 @@
                 $review->setImage($imageName);
             }
 
-            echo '<pre>'; 
-            var_dump($imageName);
-            echo '</pre>';
 
             $review->sincronize($args);
-    
-            echo '<pre>'; 
-            var_dump($errors);
-            echo '</pre>';
-            
+
             $errors = $review->validate();
 
-            echo '<pre>'; 
-            var_dump(UPLOAD_DIR);
-            echo '</pre>';
+  
             if (empty($errors)) {
+                if ($_FILES['review']['tmp_name']['cover']) {
 
                 $image->save(UPLOAD_DIR . $imageName);
-
+                }
+                
                 $result = $review->saveReview();
             }
         }
